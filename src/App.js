@@ -102,8 +102,10 @@ const App = () => {
 
     // get the day in that month
     // I don't know whether this works 100%, but seems to work so far (needs further testing)
+    // change the below methods from .getDay() to .toLocaleDateString()
     const bookedForThatDay = booked.filter(
-      (time) => new Date(time).getDate() === currD.getDate()
+      (time) =>
+        new Date(time).toLocaleDateString() === currD.toLocaleDateString()
     )
 
     console.log(bookedForThatDay) // I get what I expect to get
