@@ -6,9 +6,14 @@ import {
   MuiPickersUtilsProvider,
 } from "@material-ui/pickers"
 import { availableTimes } from "./dates"
+import { useTranslation } from "react-i18next"
 // import moment from "moment"
 
 const App = () => {
+  // localization stuff
+  const { t, i18n } = useTranslation("common")
+  console.log(i18n.language)
+
   const [chosenDate, setChosenDate] = useState(new Date())
   console.log(chosenDate)
 
@@ -102,7 +107,6 @@ const App = () => {
 
     // get the day in that month
     // I don't know whether this works 100%, but seems to work so far (needs further testing)
-    // change the below methods from .getDay() to .toLocaleDateString()
     const bookedForThatDay = booked.filter(
       (time) =>
         new Date(time).toLocaleDateString() === currD.toLocaleDateString()
@@ -133,12 +137,13 @@ const App = () => {
             disablePast
             format="yyyy/MM/dd hh:mm"
             shouldDisableDate={shouldDisableDate}
+            invalidLabel="Invalid label"
           />
         </MuiPickersUtilsProvider>
       </div>
 
       <div style={{ marginTop: 50 }}>
-        {totalAvailable.length > 0 ? (
+        {totalAvailable.length > 0 && (
           <>
             <p>Available time slots: {totalAvailable.length}</p>
             {totalAvailable.map((time, index) => (
@@ -147,10 +152,18 @@ const App = () => {
               </div>
             ))}
           </>
-        ) : (
-          <p>Sorry, but this day is booked out</p>
         )}
       </div>
+
+      {/* localization */}
+      <p style={{ marginTop: 50 }}>{t("hello")}</p>
+      <button
+        onClick={() =>
+          i18n.changeLanguage(i18n.language === "en" ? "cz" : "en")
+        }
+      >
+        change language
+      </button>
     </div>
   )
 }
