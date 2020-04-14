@@ -54,35 +54,39 @@ const App = () => {
       patient: "Anonymous",
       startAt: "2020-04-10T15:00:00",
     },
-    {
-      patient: "Pavel Srom",
-      startAt: "2020-04-16T08:00:00", // april 16th is fully booked too (all below)
-    },
-    {
-      patient: "Anonymous",
-      startAt: "2020-04-16T09:00:00",
-    },
-    {
-      patient: "Anonymous",
-      startAt: "2020-04-16T10:00:00",
-    },
-    {
-      patient: "Anonymous",
-      startAt: "2020-04-16T11:00:00",
-    },
-    {
-      patient: "Anonymous",
-      startAt: "2020-04-16T13:00:00",
-    },
-    {
-      patient: "Anonymous",
-      startAt: "2020-04-16T14:00:00",
-    },
-    {
-      patient: "Anonymous",
-      startAt: "2020-04-16T15:00:00",
-    },
+    // {
+    //   patient: "Pavel Srom",
+    //   startAt: "2020-04-16T08:00:00", // april 16th is fully booked too (all below)
+    // },
+    // {
+    //   patient: "Anonymous",
+    //   startAt: "2020-04-16T09:00:00",
+    // },
+    // {
+    //   patient: "Anonymous",
+    //   startAt: "2020-04-16T10:00:00",
+    // },
+    // {
+    //   patient: "Anonymous",
+    //   startAt: "2020-04-16T11:00:00",
+    // },
+    // {
+    //   patient: "Anonymous",
+    //   startAt: "2020-04-16T13:00:00",
+    // },
+    // {
+    //   patient: "Anonymous",
+    //   startAt: "2020-04-16T14:00:00",
+    // },
+    // {
+    //   patient: "Anonymous",
+    //   startAt: "2020-04-16T15:00:00",
+    // },
   ]
+
+  console.log(
+    bookedDates.filter(({ startAt }) => startAt > new Date().toISOString()) // shows future appointments
+  )
 
   // convert all possible available slots to chosenDate + that time
   const availableSlots = availableTimes.map((time) =>
