@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 
-// AnotherPerson just added a comment
+// AnotherPerson just added a comment to its branch
 export const useLocalization = section => {
   const { t, i18n } = useTranslation(section)
 
