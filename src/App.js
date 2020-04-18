@@ -41,6 +41,7 @@ const App = () => {
       await formSchema.validate(form, { abortEarly: false })
       console.log('Form is valid')
     } catch (err) {
+      // comment
       handleFormErrors(err, formErrors, setFormErrors)
     }
   }
